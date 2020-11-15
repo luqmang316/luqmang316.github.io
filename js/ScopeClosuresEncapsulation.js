@@ -1,22 +1,42 @@
 "use strict";
 
-function max(num1, num2) {
-    if (num1 > num2)
-        document.getElementById("output").innerHTML = num1;
-    else
-        document.getElementById("output").innerHTML = num2;
-}
 
 
-function findMax() {
-    let max = -Infinity;
-    for (let i = 0; i < arguments.length; i++) {
-        if (arguments[i] > max) {
-            max = arguments[i];
+
+function bannedWords(sentence, common) {
+
+    var wordArr = sentence.match(/\w+/g),
+        commonObj = {},
+        word, i;
+    var result = "";
+    common = common.split(',');
+    for (i = 0; i < common.length; i++) {
+        commonObj[common[i].trim()] = true;
+    }
+
+    for (i = 0; i < wordArr.length; i++) {
+        word = wordArr[i].trim();
+        if (!commonObj[word]) {
+            result = result + " " + word;
         }
     }
-    document.getElementById("output").innerHTML = max;
+
+    document.getElementById("output").innerHTML = result;
 }
+
+function bubbleSort(array) {
+    for (let i = 0; i < array.length; i++) {
+        for (let j = 0; j < array.length; j++) {
+            if (array[j] > array[j + 1]) {
+                let temp = array[j];
+                array[j] = array[j + 1];
+                array[j + 1] = temp;
+            }
+        }
+    }
+    document.getElementById("output2").innerHTML = array;
+}
+
 
 function findMaxNumber() {
     let max = -Infinity;
@@ -109,6 +129,20 @@ function computeSumOfSquaresOfEvensOnly(intArray) {
         }
     }
     document.getElementById("output10").innerHTML = total;
+}
+
+function sumUsingReduce(arr) {
+    let r = arr.reduce(function(a, b) {
+        return a + b;
+    })
+    document.getElementById("output11a").innerHTML = r;
+}
+
+function multiplyUsingReduce(arr) {
+    let r = arr.reduce(function(a, b) {
+        return a * b;
+    })
+    document.getElementById("output11b").innerHTML = r;
 }
 
 function findSecondBiggest(arr) {

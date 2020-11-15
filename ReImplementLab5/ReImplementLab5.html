@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="../css/BasicJavaScript.css">
+    <script src="../js/ReImplementLab5.js" type="text/javascript"></script>
+</head>
+
+<body>
+    <h1>Re-implement the Lab 5</h1>
+    <a class="home" href="../index.html">HOME</a>
+
+    <p>CLick on questions to see the solution</p>
+
+
+    <button class="collapsible">Re-implement the following exercises from Lab 5 to use map/filter/reduce Array methods instead of for loops. </button>
+    <div class="content">
+        <div class="box-left-column">
+            <span>E.g. sumUsingReduce([1,2,3,4]) =10, multiplyUsingReduce([1,2,3,4])=24</span>
+            <p>
+                <button onclick="sumUsingReduce([1,2,3,4]);">Sum Using Reduce</button>
+                <span>Sum Result:</span>
+                <span id="output1"></span>
+                <button onclick="multiplyUsingReduce([1,2,3,4]);">Multiply Using Reduce</button>
+                <span>Multiply Result:</span>
+                <span id="output2"></span>
+            </p>
+        </div>
+
+        <div class="box-right-column">
+            <pre>
+                &lt;script&gt;
+                function sumUsingReduce(arr) {
+                    let r = arr.reduce(function (a, b) {
+                        return a+b;
+                      })
+                    return r
+                }
+                
+                function multiplyUsingReduce(arr) {
+                    let r = arr.reduce(function (a, b) {
+                        return a*b;
+                      })
+                    return r
+                }
+                &lt;/script&gt;
+            </pre>
+        </div>
+    </div>
+
+
+    <script>
+        var coll = document.getElementsByClassName("collapsible");
+        var i;
+
+        for (i = 0; i < coll.length; i++) {
+            coll[i].addEventListener("click", function() {
+                this.classList.toggle("active");
+                var content = this.nextElementSibling;
+                if (content.style.maxHeight) {
+                    content.style.maxHeight = null;
+                } else {
+                    content.style.maxHeight = content.scrollHeight + "px";
+                }
+            });
+        }
+    </script>
+
+
+</body>
+
+</html>
